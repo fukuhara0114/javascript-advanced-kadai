@@ -59,7 +59,7 @@ const keyPress = e => {
     typedfield.textContent = typed;
     untypedfield.textContent = untyped;
     typeCount.textContent = count_type;
-    
+
     if(untyped === ''){
         createText();
     }
@@ -67,7 +67,7 @@ const keyPress = e => {
 
 const rankCheck = score => {
 
-    let text = '';
+        let text = '';
 
     if(score < 100) {
         text = `あなたのランクはCです。\nBランクまであと${100 - score}文字です。`;
@@ -87,8 +87,6 @@ const gameOver = id => {
 
     clearInterval(id);
 
-
-
     const result = confirm(rankCheck(score));
 
     if(result == true){
@@ -107,12 +105,20 @@ const timer = () => {
 
         if(time <= 0){
 
-            gameOver(id);
+                untypedfield.textContent = 'タイムアップ！';
+                typedfield.textContent = '';
+
+                setTimeout(() =>{
+                    gameOver(id);
+
+                },100);
         }
     }, 1000);
 };
 
 start.addEventListener('click', () => {
+
+    console.log('start was clicked');
 
     timer();
 
@@ -123,6 +129,7 @@ start.addEventListener('click', () => {
     typeCount.textContent = '0';
 
     document.addEventListener('keypress', keyPress);
+
 
 });
 
