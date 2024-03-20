@@ -59,7 +59,7 @@ const keyPress = e => {
     typedfield.textContent = typed;
     untypedfield.textContent = untyped;
     typeCount.textContent = count_type;
-    
+
     if(untyped === ''){
         createText();
     }
