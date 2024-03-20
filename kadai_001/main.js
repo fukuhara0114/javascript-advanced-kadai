@@ -1,12 +1,14 @@
 let untyped = '';
 let typed = '';
 let score = 0;
+let count_type = 0;
 
 const untypedfield = document.getElementById('untyped');
 const typedfield = document.getElementById('typed');
 const background = document.getElementById('wrap');
 const start = document.getElementById('start');
 const count = document.getElementById('count');
+const typeCount = document.getElementById('typeCount');
 
 const textLists = [
     'Hello World','This is my App','How are you?',
@@ -50,12 +52,14 @@ const keyPress = e => {
     }
 
     score ++;
+    count_type ++;
 
     typed += untyped.substring(0,1);
     untyped = untyped.substring(1);
     typedfield.textContent = typed;
     untypedfield.textContent = untyped;
-
+    typeCount.textContent = count_type;
+    
     if(untyped === ''){
         createText();
     }
@@ -113,6 +117,8 @@ start.addEventListener('click', () => {
     createText();
     
     start.style.display = 'none';
+    typeCount.style.display = 'block';
+    typeCount.textContent = '0';
 
     document.addEventListener('keypress', keyPress);
 

@@ -24,3 +24,7 @@ body{
 .mistyped{
     background-color: red;
 }
+
+#typeCount{
+    display: none;
+}
